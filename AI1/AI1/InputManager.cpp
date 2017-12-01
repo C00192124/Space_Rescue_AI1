@@ -6,6 +6,7 @@ using namespace std;
 InputManager::InputManager(sf::Event e)
 {
 	m_event = e;
+	
 }
 
 void InputManager::CheckInput(sf::RenderWindow &w)
@@ -39,6 +40,10 @@ void InputManager::CheckInput(sf::RenderWindow &w)
 				space = true;
 				cout << "Space Pressed" << endl;
 			}
+			if (m_event.key.code == sf::Keyboard::Return) {
+				enter = true;
+				cout << "Space Pressed" << endl;
+			}
 			break;
 
 		case sf::Event::KeyReleased:
@@ -53,6 +58,8 @@ void InputManager::CheckInput(sf::RenderWindow &w)
 				right = false;
 			if (m_event.key.code == sf::Keyboard::Space)
 				space = false;
+			if (m_event.key.code == sf::Keyboard::Return)
+				enter = false;
 			break;
 
 		default:

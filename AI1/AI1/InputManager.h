@@ -4,6 +4,7 @@
 class InputManager
 {
 public:
+	InputManager() {}
 	InputManager(sf::Event e);
 	~InputManager();
 	void CheckInput(sf::RenderWindow &w);
@@ -11,7 +12,8 @@ public:
 	bool up = false;
 	bool left = false;
 	bool right = false;
-	bool space = true;
+	bool space = false;
+	bool enter = false;
 
 private:
 	sf::Event m_event;
