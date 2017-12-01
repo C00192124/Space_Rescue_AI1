@@ -6,14 +6,14 @@ Menu::Menu(float width, float height)
 {
 	if (!m_MenuTexture.loadFromFile("menuBackground.jpg"))
 	{
-		std::cout << "Failed To Load Background" << std::endl;
+		
 	}
 
 	m_MenuSprite.setTexture(m_MenuTexture);
 
 	if (!m_Font.loadFromFile("arial.ttf"))
 	{
-		std::cout << " Failed To Load Font" << std::endl;
+		
 	}
 
 	m_MenuText[0].setFont(m_Font);
