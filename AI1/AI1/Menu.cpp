@@ -1,33 +1,34 @@
 #include "Menu.h"
 
-
-
-Menu::Menu(float width, float height)
+Menu::Menu(float width, float height, InputManager *i)
 {
 	if (!m_MenuTexture.loadFromFile("menuBackground.jpg"))
 	{
-		
+		std::cout << "Failed To Load Texture" << std::endl;
 	}
 
 	m_MenuSprite.setTexture(m_MenuTexture);
 
 	if (!m_Font.loadFromFile("arial.ttf"))
 	{
-		
+		std::cout << "Failed To Load Font" << std::endl;
 	}
 
 	m_MenuText[0].setFont(m_Font);
 	m_MenuText[0].setFillColor(sf::Color::Magenta);
 	m_MenuText[0].setString("Play");
-	m_MenuText[0].setCharacterSize(150);
+	m_MenuText[0].setCharacterSize(75);
 	m_MenuText[0].setPosition(sf::Vector2f(width / 2.5, height / (Max_Number_Of_Items + 1) * 1));
 
 	m_MenuText[1].setFont(m_Font);
-	m_MenuText[1].setFillColor(sf::Color::Magenta);
+	m_MenuText[1].setFillColor(sf::Color::Black);
 	m_MenuText[1].setString("Exit");
-	m_MenuText[1].setCharacterSize(150);
-	m_MenuText[1].setPosition(sf::Vector2f(width / 2.5, height / (Max_Number_Of_Items + 1) * 1));
+	m_MenuText[1].setCharacterSize(75);
+	m_MenuText[1].setPosition(sf::Vector2f(width / 2.5, height / (Max_Number_Of_Items + 1) * 1.8));
 
+	timer = 0;
+	m_SelectedItem = 0;
+	input = i;
 	
 }
 
@@ -77,6 +78,24 @@ void Menu::MoveDown()
 		m_MenuText[m_SelectedItem].setFillColor(sf::Color::Black);
 		m_SelectedItem -= 1;
 		m_MenuText[m_SelectedItem].setFillColor(sf::Color::Magenta);
+	}
+}
+
+void Menu::Update()
+{
+	timer++;
+	if (timer > 18)
+	{
+		if (input->up)
+		{
+			MoveUp();
+			timer = 0;
+		}
+		if (input->down)
+		{
+			MoveDown();
+			timer = 0;
+		}
 	}
 }
 

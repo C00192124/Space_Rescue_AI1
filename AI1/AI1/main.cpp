@@ -13,14 +13,15 @@ void main()
 {
 	sf::RenderWindow window(sf::VideoMode(1024, 768), "AI");
 	window.setFramerateLimit(60);
-	Menu m_Menu(windowWidth, windowHeight);
 
 	InputManager *input = new InputManager(event);
+	Menu m_Menu(windowWidth, windowHeight, input);
 
 	while (window.isOpen())
 	{
 		//check input
 		input->CheckInput(window);
+		m_Menu.Update();
 
 		//draw
 		window.clear();
