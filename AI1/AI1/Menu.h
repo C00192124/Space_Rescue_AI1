@@ -1,7 +1,8 @@
 #pragma once
+#include <iostream>
 #include <SFML\Graphics.hpp>
 
-#define Max_Number_Of_Items 3
+#define Max_Number_Of_Items 2
 class Menu
 {
 public:
