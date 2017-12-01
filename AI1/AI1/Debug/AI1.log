@@ -1,5 +1,7 @@
-﻿  Menu.cpp
-c:\users\gameuser\desktop\space_rescue\space_rescue_ai1\ai1\ai1\menu.cpp(21): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\gameuser\desktop\space_rescue\space_rescue_ai1\ai1\ai1\menu.cpp(27): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  AI1.vcxproj -> C:\Users\gameuser\Desktop\Space_Rescue\Space_Rescue_AI1\AI1\Debug\AI1.exe
-  AI1.vcxproj -> C:\Users\gameuser\Desktop\Space_Rescue\Space_Rescue_AI1\AI1\Debug\AI1.pdb (Partial PDB)
+﻿  Player.cpp
+c:\users\gameuser\desktop\space_rescue_ai1\ai1\ai1\player.cpp(39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\gameuser\desktop\space_rescue_ai1\ai1\ai1\player.cpp(40): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\gameuser\desktop\space_rescue_ai1\ai1\ai1\player.cpp(44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\gameuser\desktop\space_rescue_ai1\ai1\ai1\player.cpp(45): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  AI1.vcxproj -> C:\Users\gameuser\Desktop\Space_Rescue_AI1\AI1\Debug\AI1.exe
+  AI1.vcxproj -> C:\Users\gameuser\Desktop\Space_Rescue_AI1\AI1\Debug\AI1.pdb (Partial PDB)
