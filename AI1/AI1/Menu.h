@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "InputManager.h"
+#include "Gamestates.h"
 #include <SFML\Graphics.hpp>
 
 #define Max_Number_Of_Items 2
@@ -14,6 +15,7 @@ public:
 	void MoveDown();
 	void MoveUp();
 	void Update();
+	void SelectedItem(gamestates*, sf::RenderWindow &);
 	int GetPressedItem() { return m_SelectedItem; }
 
 private:

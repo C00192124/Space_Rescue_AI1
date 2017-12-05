@@ -39,6 +39,7 @@ Menu::~Menu()
 
 void Menu::draw(sf::RenderWindow &window)
 {
+
 	window.draw(m_MenuSprite);
 
 	for (int i = 0; i < Max_Number_Of_Items; i++)
@@ -78,6 +79,21 @@ void Menu::MoveDown()
 		m_MenuText[m_SelectedItem].setFillColor(sf::Color::Black);
 		m_SelectedItem -= 1;
 		m_MenuText[m_SelectedItem].setFillColor(sf::Color::Magenta);
+	}
+}
+
+void Menu::SelectedItem(gamestates* s, sf::RenderWindow & w)
+{
+	if (s->currentState == gamestates::Menu)
+	{
+		if ((input->enter && m_SelectedItem == 0))
+		{
+			s->currentState = gamestates::Play;
+		}
+		else if ((input->enter && m_SelectedItem == 1))
+		{
+			w.close();
+		}
 	}
 }
 
