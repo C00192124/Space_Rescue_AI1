@@ -5,7 +5,7 @@ Player::Player(InputManager *i)
 	m_PlayerTexture.loadFromFile("Resources/player.png");
 	m_Player.setTexture(m_PlayerTexture);
 	m_Player.setOrigin(m_Player.getLocalBounds().width / 2, m_Player.getLocalBounds().height / 2);
-	m_Player.setPosition(200, 200);
+	m_Player.setPosition(1500, 1500);
 	camera = sf::View(sf::FloatRect(0, 0, 1024, 768));
 	m_Input = i;
 }
