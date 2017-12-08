@@ -5,6 +5,7 @@
 #include "Menu.h"
 #include "Player.h"
 #include "Gamestates.h"
+#include "GameWorld.h"
 
 using namespace std;
 
@@ -21,6 +22,7 @@ void main()
 	m_state.currentState = gamestates::Menu;
 
 	InputManager *input = new InputManager(event);
+	GameWorld world;
 	Menu m_Menu(windowWidth, windowHeight, input);
 	Player p(input);
 
@@ -45,6 +47,7 @@ void main()
 		window.clear();
 		if (m_state.currentState == gamestates::Play)
 		{
+			world.Render(window);
 			p.Render(window);
 		}
 		else if (m_state.currentState == gamestates::Menu)
