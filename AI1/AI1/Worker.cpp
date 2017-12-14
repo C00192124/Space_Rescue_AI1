@@ -6,16 +6,12 @@ Worker::Worker()
 	m_WorkerTexture.loadFromFile("Resources/Bee.png");
 	m_Worker.setTexture(m_WorkerTexture);
 	m_WorkerVelocity = sf::Vector2f(3.0f, 0.0f);
-	m_Workerposition = sf::Vector2f(1200, 1500);
+	m_WorkerPosition = sf::Vector2f(1200, 1500);
 	m_Worker.setOrigin(m_Worker.getLocalBounds().width / 2, m_Worker.getLocalBounds().height / 2);
-	distance = 75;
-
+	distance = 1000;
 }
 
-
-Worker::~Worker()
-{
-}
+Worker::~Worker() {}
 
 void Worker::Render(sf::RenderWindow &w)
 {
@@ -38,15 +34,14 @@ sf::Vector2f Worker::Normalise(sf::Vector2f vec)
 
 void Worker::MoveWorker()
 {
-	m_Workerposition += m_WorkerVelocity;
-	m_Worker.setPosition(m_Workerposition);
+	m_WorkerPosition += m_WorkerVelocity;
+	m_Worker.setPosition(m_WorkerPosition);
 }
 
 void Worker::update()
 {	
 	Wander(time,wanderTarget);
 	MoveWorker();
-
 }
 
 void Worker::Wander(float & time, sf::Vector2f& target)
@@ -63,7 +58,7 @@ void Worker::Wander(float & time, sf::Vector2f& target)
 		sf::Vector2f direction = Normalise(m_WorkerVelocity);
 		sf::Vector2f point = direction*distance;
 
-		point += m_Workerposition;
+		point += m_WorkerPosition;
 		float angle = ((rand() % 361)*3.14159 / 180);
 
 
@@ -80,24 +75,24 @@ void Worker::Wander(float & time, sf::Vector2f& target)
 
 void Worker::Seek(sf::Vector2f&  tar)
 {
-	m_WorkerVelocity = tar - m_Workerposition;
+	m_WorkerVelocity = tar - m_WorkerPosition;
 	m_WorkerVelocity = Normalise(m_WorkerVelocity);
 	m_WorkerVelocity = m_WorkerVelocity * 2.0f;
-	m_WorkerOreintation= GetOreintation();
-	m_Worker.setRotation(m_WorkerOreintation);
-
+	m_WorkerOrientation= GetOrientation();
+	m_Worker.setRotation(m_WorkerOrientation);
 }
 
-float Worker::GetOreintation()
+float Worker::GetOrientation()
 {
 	float rotation = 0.0f;
-	if (length(m_WorkerVelocity) > 0) {
-		// Note atan2 returns an angle in radians which you 
-		// may want to convert to degrees.
+	
+	if (length(m_WorkerVelocity) > 0) 
+	{
 		rotation = atan2(m_WorkerVelocity.x, -m_WorkerVelocity.y);
 
 		rotation = rotation * 180 / 3.14;
 
 	}
+
 	return rotation;
 }
