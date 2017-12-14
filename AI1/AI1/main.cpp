@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Gamestates.h"
 #include "GameWorld.h"
+#include "Worker.h"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ void main()
 	InputManager *input = new InputManager(event);
 	GameWorld world;
 	Menu m_Menu(windowWidth, windowHeight, input);
+	Worker w;
 	Player p(input);
 
 	while (window.isOpen())
@@ -35,6 +37,7 @@ void main()
 		if (m_state.currentState == gamestates::Play)
 		{
 			p.Update();
+			w.update();
 			window.setView(p.GetView());
 		}
 		else if (m_state.currentState == gamestates::Menu)
@@ -49,6 +52,7 @@ void main()
 		{
 			world.Render(window);
 			p.Render(window);
+			w.Render(window);
 		}
 		else if (m_state.currentState == gamestates::Menu)
 		{
