@@ -17,7 +17,7 @@ void Player::Render(sf::RenderWindow &w)
 
 void Player::Update()
 {
-	m_Velocity = setVelocity(m_Orientation);
+	m_Velocity = Vector::setVelocity(m_Orientation);
 	m_Velocity *= m_Speed;
 	m_Player.move(m_Velocity);
 	camera.setCenter(m_Player.getPosition().x, m_Player.getPosition().y);
@@ -44,14 +44,6 @@ void Player::Update()
 		m_Orientation = m_Orientation + 0.1;
 		m_Player.setRotation(m_Orientation*(180 / 3.14159));
 	}
-}
-
-sf::Vector2f Player::setVelocity(float &currentOrientation) {
-
-	sf::Vector2f tempVel;
-	tempVel.x = sin(currentOrientation);
-	tempVel.y = -cos(currentOrientation);
-	return tempVel;
 }
 
 sf::View Player::GetView()

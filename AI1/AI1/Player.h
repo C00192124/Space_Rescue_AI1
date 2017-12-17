@@ -1,8 +1,9 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "InputManager.h"
+#include "GameObject.h"
 
-class Player
+class Player: public GameObject
 {
 public:
 	Player(InputManager *i);

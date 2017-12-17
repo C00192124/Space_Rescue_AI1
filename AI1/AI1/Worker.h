@@ -1,7 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "GameObject.h"
 
-class Worker
+class Worker: public GameObject
 {
 public:
 	Worker();
@@ -14,9 +15,7 @@ private:
 
 	void Wander(float & time, sf::Vector2f&);
 	void Seek(sf::Vector2f&);
-	float GetOrientation();
 	void MoveWorker();
-	sf::Vector2f Normalise(sf::Vector2f vec);
 
 	// Worker Variables
 	sf::Vector2f m_WorkerVelocity;
@@ -30,6 +29,5 @@ private:
 	float distance;
 	float radius = 500.0f;
 	float m_WorkerOrientation;
-	float length(sf::Vector2f vec);
 };
 
