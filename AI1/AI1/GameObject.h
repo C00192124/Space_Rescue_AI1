@@ -61,6 +61,6 @@ class GameObject
 {
 public:
 
-
+	std::vector<GameObject>m_gameObject;
 
 };
