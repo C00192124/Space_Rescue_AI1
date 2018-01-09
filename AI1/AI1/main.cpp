@@ -7,6 +7,8 @@
 #include "Gamestates.h"
 #include "GameWorld.h"
 #include "Worker.h"
+#include "PowerUp.h"
+#include "AlienNest.h"
 
 using namespace std;
 
@@ -26,7 +28,9 @@ void main()
 	GameWorld world;
 	Menu m_Menu(windowWidth, windowHeight, input);
 	Worker w;
+	AlienNest m_aNest;
 	Player p(input);
+	PowerUp powerup;
 
 	while (window.isOpen())
 	{
@@ -51,8 +55,10 @@ void main()
 		if (m_state.currentState == gamestates::Play)
 		{
 			world.Render(window);
+			powerup.Render(window);
 			p.Render(window);
 			w.Render(window);
+			m_aNest.Render(window);
 		}
 		else if (m_state.currentState == gamestates::Menu)
 		{

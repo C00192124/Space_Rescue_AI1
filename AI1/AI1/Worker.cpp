@@ -67,4 +67,3 @@ void Worker::Seek(sf::Vector2f&  tar)
 	m_WorkerOrientation= Vector::GetOrientation(m_WorkerOrientation, m_WorkerVelocity);
 	m_Worker.setRotation(m_WorkerOrientation);
 }
-
