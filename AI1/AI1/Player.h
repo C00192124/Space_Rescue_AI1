@@ -1,11 +1,12 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "InputManager.h"
-#include "GameObject.h"
+#include "BasicFunction.h"
 
-class Player: public GameObject
+class Player 
 {
 public:
+	Player();
 	Player(InputManager *i);
 	~Player();
 	void Render(sf::RenderWindow &w);
@@ -25,7 +26,5 @@ private:
 	
 	float m_Speed;
 	float m_Orientation;
-
-	sf::Vector2f setVelocity(float &currentOrientation);
 };
 

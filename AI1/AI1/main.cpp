@@ -16,21 +16,27 @@ sf::Event event;
 static const int windowWidth = 1024;
 static const int windowHeight = 768;
 gamestates m_state;
+
 void main()
 {
 	sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "AI");
 	window.setFramerateLimit(60);
-
+	srand(time(NULL));
 
 	m_state.currentState = gamestates::Menu;
+
+
 
 	InputManager *input = new InputManager(event);
 	GameWorld world;
 	Menu m_Menu(windowWidth, windowHeight, input);
 	Worker w;
 	AlienNest m_aNest;
+	AlienNest m_aNest1;
+	AlienNest m_aNest2;
 	Player p(input);
 	PowerUp powerup;
+
 
 	while (window.isOpen())
 	{
@@ -41,7 +47,7 @@ void main()
 		if (m_state.currentState == gamestates::Play)
 		{
 			p.Update();
-			w.update();
+			w.Update();
 			window.setView(p.GetView());
 		}
 		else if (m_state.currentState == gamestates::Menu)
@@ -49,7 +55,7 @@ void main()
 			m_Menu.Update();
 		}
 		//Method to change the game states in the menu.
-		m_Menu.SelectedItem(&m_state,window);
+		m_Menu.SelectedItem(&m_state, window);
 		//draw
 		window.clear();
 		if (m_state.currentState == gamestates::Play)
@@ -59,6 +65,9 @@ void main()
 			p.Render(window);
 			w.Render(window);
 			m_aNest.Render(window);
+			m_aNest1.Render(window);
+			m_aNest2.Render(window);
+
 		}
 		else if (m_state.currentState == gamestates::Menu)
 		{

@@ -1,15 +1,15 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Player.h"
-#include "GameObject.h"
+#include "BasicFunction.h"
 
-class PowerUp: GameObject
+class PowerUp 
 {
 public:
 	PowerUp();
 	~PowerUp();
 	void Render(sf::RenderWindow &w);
-	void update();
+	void Update();
 	void Collision(Player* p);
 
 private:

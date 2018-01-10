@@ -1,23 +1,24 @@
 #pragma once
 #include "SFML\Graphics.hpp"
-#include "GameObject.h"
+#include "BasicFunction.h"
+#include <math.h>
+#include <time.h>
 
-class AlienNest : public GameObject
+class AlienNest
 {
 public:
 	AlienNest();
 	~AlienNest();
+	void Render(sf::RenderWindow &w);
 	void Update();
-	void Render(sf::RenderWindow &);
-
-
+	
 private:
 
 	//Alien Nest Variables
-
 	sf::Texture m_NestTexture;
 	sf::Sprite m_Nest;
-	int m_MaxNests;
+	int randx;
+	int randy;
 
 
 

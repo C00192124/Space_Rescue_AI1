@@ -1,15 +1,15 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "GameObject.h"
+#include "BasicFunction.h"
 
-class Worker: public GameObject
+class Worker 
 {
 public:
 	Worker();
 	~Worker();
 
 	void Render(sf::RenderWindow &w);
-	void update();
+	void Update();
 
 private:
 
