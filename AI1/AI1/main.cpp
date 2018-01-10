@@ -48,6 +48,12 @@ void main()
 		{
 			p.Update();
 			w.Update();
+			m_aNest.Update(p.m_Player);
+			m_aNest1.Update(p.m_Player);
+			m_aNest2.Update(p.m_Player);
+			
+
+
 			window.setView(p.GetView());
 		}
 		else if (m_state.currentState == gamestates::Menu)

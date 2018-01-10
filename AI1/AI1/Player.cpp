@@ -10,7 +10,8 @@ Player::Player(InputManager *i)
 	m_PlayerTexture.loadFromFile("Resources/player.png");
 	m_Player.setTexture(m_PlayerTexture);
 	m_Player.setOrigin(m_Player.getLocalBounds().width / 2, m_Player.getLocalBounds().height / 2);
-	m_Player.setPosition(1500, 1500);
+	m_PlayerPosition = sf::Vector2f(1500, 1500);
+	m_Player.setPosition(m_PlayerPosition);
 	camera = sf::View(sf::FloatRect(0, 0, 1024, 768));
 	m_Input = i;
 }
@@ -26,7 +27,7 @@ void Player::Update()
 	m_Velocity *= m_Speed;
 	m_Player.move(m_Velocity);
 	camera.setCenter(m_Player.getPosition().x, m_Player.getPosition().y);
-
+	m_PlayerPosition = sf::Vector2f(m_Player.getPosition().x, m_Player.getPosition().y);
 	if (m_Input->up)
 	{
 		if (m_Speed <= 5.0f) {
