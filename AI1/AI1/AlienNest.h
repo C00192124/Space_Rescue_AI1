@@ -13,8 +13,8 @@ public:
 	void Render(sf::RenderWindow &w);
 	void Update(sf::Sprite &p);
 	void Seek(sf::Vector2f&  tar);
-	void FindPlayer(int,int);
-	void FireMissile(int, int);
+	void FindPlayerPosition(int,int);
+	void FireMissileNow(int, int);
 
 private:
 

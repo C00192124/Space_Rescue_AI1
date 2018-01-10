@@ -40,7 +40,7 @@ AlienNest::~AlienNest()
 {
 }
 
-void AlienNest::FindPlayer(int x, int y)
+void AlienNest::FindPlayerPosition(int x, int y)
 {
 	m_NestPosition = m_Nest.getPosition();
 	sf::Vector2f p = sf::Vector2f(x, y);
@@ -57,7 +57,7 @@ void AlienNest::FindPlayer(int x, int y)
 	}
 }
 
-void AlienNest::FireMissile(int x, int y)
+void AlienNest::FireMissileNow(int x, int y)
 {
 	sf::Vector2f p = sf::Vector2f(x, y);
 	m_NestPosition = m_Nest.getPosition();
@@ -82,8 +82,8 @@ void AlienNest::Seek(sf::Vector2f&  tar)
 
 void AlienNest::Update(sf::Sprite &p)
 {
-	FindPlayer(p.getPosition().x,p.getPosition().y);
-	FireMissile(p.getPosition().x, p.getPosition().y);
+	FindPlayerPosition(p.getPosition().x,p.getPosition().y);
+	FireMissileNow(p.getPosition().x, p.getPosition().y);
 	if (m_MissileAlive)
 	{
 		sf::Vector2f temp = p.getPosition();
