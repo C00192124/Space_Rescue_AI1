@@ -6,7 +6,7 @@ Worker::Worker()
 	m_WorkerTexture.loadFromFile("Resources/Bee.png");
 	m_Worker.setTexture(m_WorkerTexture);
 	m_WorkerVelocity = sf::Vector2f(3.0f, 0.0f);
-	m_WorkerPosition = sf::Vector2f(1200, 1500);
+	m_WorkerPosition = sf::Vector2f(rand() % 3000, rand() % 3000);
 	m_Worker.setOrigin(m_Worker.getLocalBounds().width / 2, m_Worker.getLocalBounds().height / 2);
 	distance = 1000;
 }
@@ -18,16 +18,11 @@ void Worker::Render(sf::RenderWindow &w)
 	w.draw(m_Worker);
 }
 
-void Worker::MoveWorker()
-{
-	m_WorkerPosition += m_WorkerVelocity;
-	m_Worker.setPosition(m_WorkerPosition);
-}
-
 void Worker::Update()
 {	
 	Wander(time,wanderTarget);
-	MoveWorker();
+	m_WorkerPosition += m_WorkerVelocity;
+	m_Worker.setPosition(m_WorkerPosition);
 }
 
 void Worker::Wander(float & time, sf::Vector2f& target)

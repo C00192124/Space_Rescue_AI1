@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include <iostream>
 #include "InputManager.h"
 #include "BasicFunction.h"
+#include "Worker.h"
 
 class Player 
 {
@@ -10,7 +12,7 @@ public:
 	Player(InputManager *i);
 	~Player();
 	void Render(sf::RenderWindow &w);
-	void Update();
+	void Update(std::vector<Worker> *w);
 	sf::View GetView();
 
 private:
@@ -26,5 +28,7 @@ private:
 	
 	float m_Speed;
 	float m_Orientation;
+
+	void Collision(std::vector<Worker> *w);
 };
 
