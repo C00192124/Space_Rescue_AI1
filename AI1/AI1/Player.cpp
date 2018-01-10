@@ -1,5 +1,10 @@
 #include "Player.h"
 
+Player::Player()
+{
+
+}
+
 Player::Player(InputManager *i)
 {
 	m_PlayerTexture.loadFromFile("Resources/player.png");

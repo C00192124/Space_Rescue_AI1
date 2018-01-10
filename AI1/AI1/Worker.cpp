@@ -24,7 +24,7 @@ void Worker::MoveWorker()
 	m_Worker.setPosition(m_WorkerPosition);
 }
 
-void Worker::update()
+void Worker::Update()
 {	
 	Wander(time,wanderTarget);
 	MoveWorker();

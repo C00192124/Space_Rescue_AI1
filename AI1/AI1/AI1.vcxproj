@@ -130,7 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlienNest.h" />
-    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="BasicFunction.h" />
     <ClInclude Include="Gamestates.h" />
     <ClInclude Include="GameWorld.h" />
     <ClInclude Include="InputManager.h" />

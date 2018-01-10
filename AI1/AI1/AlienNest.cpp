@@ -7,9 +7,11 @@ AlienNest::AlienNest()
 	m_NestTexture.loadFromFile("Resources/beehive.png");
 	m_Nest.setTexture(m_NestTexture);
 	m_Nest.setOrigin(m_Nest.getLocalBounds().width / 2, m_Nest.getLocalBounds().height / 2);
-	m_Nest.setPosition(1500,1500);
-	m_MaxNests = 3;
 
+	randx = rand() % 3000;
+	randy = rand() % 3000;
+
+	m_Nest.setPosition(randx, randy);
 }
 
 
