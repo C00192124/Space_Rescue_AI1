@@ -74,15 +74,6 @@ void AlienNest::FireStinger(int x, int y)
 	}
 }
 
-void AlienNest::Seek(sf::Vector2f&  tar)
-{
-
-	m_MissileVelocity = tar - m_MissilePosition;
-	m_MissileVelocity = Functions::Normalise(m_MissileVelocity);
-	m_MissileVelocity = m_MissileVelocity * 2.0f;
-	m_MissileOrientation = Functions::GetOrientation(m_MissileOrientation, m_MissileVelocity);
-	m_Missile.setRotation(m_MissileOrientation);
-}
 
 void AlienNest::Update(sf::Sprite &p)
 {
@@ -93,7 +84,8 @@ void AlienNest::Update(sf::Sprite &p)
 		sf::Vector2f temp = p.getPosition();
 		if (m_MissileLifeTime > 0)
 		{
-			Seek(temp);
+			Functions::Seek(temp, m_MissilePosition, m_MissileVelocity, m_MissileOrientation, m_Missile);
+			
 		}	
 
 		m_MissileLifeTime--;

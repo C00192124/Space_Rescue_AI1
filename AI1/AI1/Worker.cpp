@@ -20,7 +20,9 @@ void Worker::Render(sf::RenderWindow &w)
 
 void Worker::Update(GameWorld &w)
 {	
-	Wander(time,wanderTarget);
+	
+	Functions::Wander(time, wanderTarget,m_WorkerPosition,m_WorkerVelocity,radius, distance,m_WorkerOrientation,m_Worker);
+
 	m_WorkerPosition += m_WorkerVelocity;
 	m_Worker.setPosition(m_WorkerPosition);
 
@@ -64,40 +66,3 @@ void Worker::Update(GameWorld &w)
 	
 }
 
-void Worker::Wander(float & time, sf::Vector2f& target)
-{
-	time += 1.0f / 60.0f;
-
-	if (time >= 0.8f)
-	{
-		time = 0.0;
-	}
-
-	if (time == 0.0f)
-	{
-		sf::Vector2f direction = Functions::Normalise(m_WorkerVelocity);
-		sf::Vector2f point = direction*distance;
-
-		point += m_WorkerPosition;
-		float angle = ((rand() % 361)*3.14159 / 180);
-
-
-		float x = radius*sin(angle) + point.x;
-		float y = radius*cos(angle) + point.y;
-
-		point = sf::Vector2f(x, y);
-		target = point;
-
-	}
-	Seek(target);
-
-}
-
-void Worker::Seek(sf::Vector2f&  tar)
-{
-	m_WorkerVelocity = tar - m_WorkerPosition;
-	m_WorkerVelocity = Functions::Normalise(m_WorkerVelocity);
-	m_WorkerVelocity = m_WorkerVelocity * 2.0f;
-	m_WorkerOrientation= Functions::GetOrientation(m_WorkerOrientation, m_WorkerVelocity);
-	m_Worker.setRotation(m_WorkerOrientation);
-}

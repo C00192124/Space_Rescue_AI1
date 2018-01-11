@@ -55,4 +55,42 @@ static struct Functions
 		float m_degree = m_Radian*(180 / 3.14);
 		return m_degree;
 	}
+
+	static void Wander(float & time, sf::Vector2f& target, sf::Vector2f& Position, sf::Vector2f& Velocity, float& radius, float& distance, float& orientation, sf::Sprite& obj)
+	{
+		time += 1.0f / 60.0f;
+
+		if (time >= 0.8f)
+		{
+			time = 0.0;
+		}
+
+		if (time == 0.0f)
+		{
+			sf::Vector2f direction = Normalise(Velocity);
+			sf::Vector2f point = direction*distance;
+
+			point += Position;
+			float angle = ((rand() % 361)*3.14159 / 180);
+
+
+			float x = radius*sin(angle) + point.x;
+			float y = radius*cos(angle) + point.y;
+
+			point = sf::Vector2f(x, y);
+			target = point;
+
+		}
+		Seek(target, Position, Velocity, orientation, obj);
+	}
+
+	static void Seek(sf::Vector2f&  tar, sf::Vector2f& Position, sf::Vector2f& Velocity, float& orientation, sf::Sprite& obj)
+	{
+		Velocity = tar - Position;
+		Velocity = Normalise(Velocity);
+		Velocity = Velocity * 2.0f;
+		orientation = GetOrientation(orientation, Velocity);
+		obj.setRotation(orientation);
+	}
+
 };

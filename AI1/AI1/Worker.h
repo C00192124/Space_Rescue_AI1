@@ -16,9 +16,6 @@ public:
 
 private:
 
-	void Wander(float & time, sf::Vector2f&);
-	void Seek(sf::Vector2f&);
-
 	// Worker Variables
 	sf::Vector2f m_WorkerVelocity;
 	sf::Vector2f m_WorkerPosition;

@@ -12,7 +12,6 @@ public:
 	~AlienNest();
 	void Render(sf::RenderWindow &w);
 	void Update(sf::Sprite &p);
-	void Seek(sf::Vector2f&  tar);
 	void FindPlayerPosition(int,int);
 	void FireStinger(int, int);
 
