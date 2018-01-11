@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "BasicFunction.h"
+#include "GameWorld.h"
 
 class Worker 
 {
@@ -9,7 +10,7 @@ public:
 	~Worker();
 
 	void Render(sf::RenderWindow &w);
-	void Update();
+	void Update(GameWorld &w);
 	
 	sf::Sprite m_Worker;
 

@@ -22,7 +22,7 @@ void Player::Render(sf::RenderWindow &w)
 
 void Player::Update(std::vector<Worker> *w)
 {
-	m_Velocity = Vector::setVelocity(m_Orientation);
+	m_Velocity = Functions::setVelocity(m_Orientation);
 	m_Velocity *= m_Speed;
 	m_Player.move(m_Velocity);
 	camera.setCenter(m_Player.getPosition().x, m_Player.getPosition().y);

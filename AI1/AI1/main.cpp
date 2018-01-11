@@ -55,7 +55,7 @@ void main()
 			p.Update(&workers);
 			for (int i = 0; i < workers.size(); i++)
 			{
-				workers.at(i).Update();
+				workers.at(i).Update(world);
 			}
 			window.setView(p.GetView());
 		}
