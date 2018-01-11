@@ -54,6 +54,10 @@ void AlienNest::FindPlayerPosition(int x, int y)
 			m_FoundPlayer = true;
 			std::cout << "Player Found" << std::endl;
 		}
+		else
+		{
+			m_FoundPlayer = false;
+		}
 	}
 }
 
@@ -97,10 +101,12 @@ void AlienNest::Update(sf::Sprite &p)
 		m_Missile.setPosition(m_MissilePosition);
 	}
 
-	if (m_MissileLifeTime < 0)
+	if (m_FoundPlayer && m_MissileLifeTime <= 0)
 	{
 		m_MissileAlive = false;
-		m_MissileLifeTime = 0;
+		m_FoundPlayer = false;
+		m_MissileLifeTime = 300;
+		m_MissilePosition = m_NestPosition;
 		std::cout << "MissileAlive Set To False" << std::endl;
 	}
 
