@@ -53,6 +53,9 @@ void main()
 		if (m_state.currentState == gamestates::Play)
 		{
 			p.Update(&workers);
+			m_aNest.Update(p.m_Player);
+			m_aNest1.Update(p.m_Player);
+			m_aNest2.Update(p.m_Player);
 			for (int i = 0; i < workers.size(); i++)
 			{
 				workers.at(i).Update(world);

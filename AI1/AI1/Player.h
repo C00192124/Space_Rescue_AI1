@@ -14,11 +14,11 @@ public:
 	void Render(sf::RenderWindow &w);
 	void Update(std::vector<Worker> *w);
 	sf::View GetView();
+	sf::Sprite m_Player;
 
 private:
 	//Player Variables
 	sf::Texture m_PlayerTexture;
-	sf::Sprite m_Player;
 
 	sf::Vector2f m_Velocity;
 
