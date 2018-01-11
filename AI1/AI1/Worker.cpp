@@ -43,26 +43,5 @@ void Worker::Update(GameWorld &w)
 			}
 		}
 	}
-	
-	/*if (m_WorkerPosition.x + 32 <= 64 + 32)
-	{
-		m_WorkerVelocity = -m_WorkerVelocity;
-	}
-
-	if (m_WorkerPosition.x + 32 >= 3008 - 32)
-	{
-		m_WorkerVelocity = -m_WorkerVelocity;
-	}
-	
-	if (m_WorkerPosition.y + 32 <= 64 + 32)
-	{
-		m_WorkerVelocity = -m_WorkerVelocity;
-	}
-	
-	if (m_WorkerPosition.y + 32 >= 3008 - 32)
-	{
-		m_WorkerVelocity = -m_WorkerVelocity;
-	}*/
-	
 }
 

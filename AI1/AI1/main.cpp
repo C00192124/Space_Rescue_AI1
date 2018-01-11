@@ -9,6 +9,7 @@
 #include "Worker.h"
 #include "PowerUp.h"
 #include "AlienNest.h"
+#include "Sweeper.h"
 
 using namespace std;
 
@@ -40,6 +41,7 @@ void main()
 	AlienNest m_aNest;
 	AlienNest m_aNest1;
 	AlienNest m_aNest2;
+	Sweeper sweeper;
 	Player p(input);
 	PowerUp powerup;
 
@@ -56,6 +58,7 @@ void main()
 			m_aNest.Update(p.m_Player);
 			m_aNest1.Update(p.m_Player);
 			m_aNest2.Update(p.m_Player);
+			sweeper.Update(world, p.m_Player, workers);
 			for (int i = 0; i < workers.size(); i++)
 			{
 				workers.at(i).Update(world);
@@ -83,6 +86,7 @@ void main()
 			m_aNest.Render(window);
 			m_aNest1.Render(window);
 			m_aNest2.Render(window);
+			sweeper.Render(window);
 			p.Render(window);
 
 		}
