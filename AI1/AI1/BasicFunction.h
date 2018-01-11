@@ -1,7 +1,7 @@
 #pragma once
 #include"SFML\Graphics.hpp"
 
-static struct Vector
+static struct Functions
 {
 	// Returns the length of a Vector
 	static float Length(sf::Vector2f v1)

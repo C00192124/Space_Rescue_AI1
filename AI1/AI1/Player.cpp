@@ -20,9 +20,9 @@ void Player::Render(sf::RenderWindow &w)
 	w.draw(m_Player);
 }
 
-void Player::Update()
+void Player::Update(std::vector<Worker> *w)
 {
-	m_Velocity = Vector::setVelocity(m_Orientation);
+	m_Velocity = Functions::setVelocity(m_Orientation);
 	m_Velocity *= m_Speed;
 	m_Player.move(m_Velocity);
 	camera.setCenter(m_Player.getPosition().x, m_Player.getPosition().y);
@@ -48,6 +48,24 @@ void Player::Update()
 	{
 		m_Orientation = m_Orientation + 0.1;
 		m_Player.setRotation(m_Orientation*(180 / 3.14159));
+	}
+
+	Collision(w);
+}
+
+void Player::Collision(std::vector<Worker> *w)
+{
+	for (int i = 0; i < w->size(); i++)
+	{
+		if (((m_Player.getPosition().x + 32) > w->at(i).m_Worker.getPosition().x - 32)
+			&& ((m_Player.getPosition().y + 32) > w->at(i).m_Worker.getPosition().y - 32)
+			&& ((m_Player.getPosition().x - 32) < w->at(i).m_Worker.getPosition().x + 32)
+			&& ((m_Player.getPosition().y - 32) < w->at(i).m_Worker.getPosition().y + 32))
+		{
+			std::cout << "Hit" << std::endl;
+			w->erase(w->begin() + i);
+		}
+		
 	}
 }
 
