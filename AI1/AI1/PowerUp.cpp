@@ -4,10 +4,13 @@
 
 PowerUp::PowerUp()
 {
-	m_PowerUpTexture.loadFromFile("Resources/Lightningbolt.png");
+	m_TLoader = TextureLoader::Instance();
+	m_PowerUpTexture=m_TLoader->getTexture("PowerUp");
+
 	m_PowerUp.setTexture(m_PowerUpTexture);
 	m_PowerUp.setOrigin(m_PowerUp.getLocalBounds().width / 2, m_PowerUp.getLocalBounds().height / 2);
-	m_PowerUp.setPosition(1300,1000);
+	m_PowerUpPosition = sf::Vector2f(rand() % 3000, rand() % 3000);
+	m_PowerUp.setPosition(m_PowerUpPosition);
 
 }
 
@@ -24,9 +27,4 @@ void PowerUp::Render(sf::RenderWindow &w)
 void PowerUp::Update()
 {
 
-}
-
-void PowerUp::Collision(Player* p)
-{
-	
 }

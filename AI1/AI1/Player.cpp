@@ -20,7 +20,7 @@ void Player::Render(sf::RenderWindow &w)
 	w.draw(m_Player);
 }
 
-void Player::Update(std::vector<Worker> *w)
+void Player::Update(std::vector<Worker> *w, std::vector<PowerUp> *pUp)
 {
 	m_Velocity = Functions::setVelocity(m_Orientation);
 	m_Velocity *= m_Speed;
@@ -50,11 +50,12 @@ void Player::Update(std::vector<Worker> *w)
 		m_Player.setRotation(m_Orientation*(180 / 3.14159));
 	}
 
-	Collision(w);
+	Collision(w, pUp);
 }
 
-void Player::Collision(std::vector<Worker> *w)
+void Player::Collision(std::vector<Worker> *w, std::vector<PowerUp> *pUp)
 {
+	// Worker Collision
 	for (int i = 0; i < w->size(); i++)
 	{
 		if (((m_Player.getPosition().x + 32) > w->at(i).m_Worker.getPosition().x - 32)
@@ -66,6 +67,21 @@ void Player::Collision(std::vector<Worker> *w)
 			w->erase(w->begin() + i);
 		}
 		
+	}
+
+	// PowerUp Collision
+	for (int i = 0; i < pUp->size(); i++)
+	{
+		if (((m_Player.getPosition().x + 32) > pUp->at(i).m_PowerUp.getPosition().x - 32)
+			&& ((m_Player.getPosition().y + 32) > pUp->at(i).m_PowerUp.getPosition().y - 32)
+			&& ((m_Player.getPosition().x - 32) < pUp->at(i).m_PowerUp.getPosition().x + 32)
+			&& ((m_Player.getPosition().y - 32) < pUp->at(i).m_PowerUp.getPosition().y + 32))
+		{
+			std::cout << "Hit Power Up" << std::endl;
+			pUp->erase(pUp->begin() + i);
+
+		}
+
 	}
 }
 

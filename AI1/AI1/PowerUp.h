@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Player.h"
 #include "BasicFunction.h"
+#include "TextureLoader.h"
 
 class PowerUp 
 {
@@ -10,14 +10,17 @@ public:
 	~PowerUp();
 	void Render(sf::RenderWindow &w);
 	void Update();
-	void Collision(Player* p);
+	
+	sf::Sprite m_PowerUp;
 
 private:
 
 	//Power Up Variables
+	TextureLoader * m_TLoader;
 	sf::Texture m_PowerUpTexture;
-	sf::Sprite m_PowerUp;
 	sf::Vector2f m_PowerUpPosition;
+	float m_pUpDuration;
+
 
 };
 
