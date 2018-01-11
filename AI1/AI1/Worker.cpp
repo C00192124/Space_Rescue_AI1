@@ -38,7 +38,7 @@ void Worker::Update(GameWorld &w)
 					&& (m_WorkerPosition.y - 32 <= ((64 * j) + 64 + 32)))
 				{
 					m_WorkerVelocity = -m_WorkerVelocity;
-					std::cout << "Hit" << std::endl;
+					//std::cout << "Hit" << std::endl;
 				}
 			}
 		}

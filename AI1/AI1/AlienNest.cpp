@@ -10,9 +10,9 @@ AlienNest::AlienNest()
 	m_MissileTexture.loadFromFile("Resources/Stinger.png");
 	m_Missile.setTexture(m_MissileTexture);
 
-	m_MissileVelocity = sf::Vector2f(5.0f, 5.0f);
+	m_MissileVelocity = sf::Vector2f(30.0f, 0.0f);
 
-	m_Missile.setOrigin(m_Missile.getLocalBounds().width, m_Missile.getLocalBounds().height/2 );
+	m_Missile.setOrigin(m_Missile.getLocalBounds().width/2, m_Missile.getLocalBounds().height/2 );
 	m_Nest.setOrigin(m_Nest.getLocalBounds().width / 2, m_Nest.getLocalBounds().height / 2);
 
 	randx = rand() % 2600;
@@ -73,12 +73,30 @@ void AlienNest::FireStinger(int x, int y)
 		MissilePosition = Functions::Normalise(MissilePosition);
 	}
 }
+void AlienNest::CheckPlayerCollision(sf::Sprite &p)
+{
 
+	if(((m_Missile.getPosition().x+16)>p.getPosition().x - 32)
+		&&((m_Missile.getPosition().y + 32) > p.getPosition().y - 32)
+		&&((m_Missile.getPosition().x - 16) < p.getPosition().x + 32)
+		&& ((m_Missile.getPosition().y -32) < p.getPosition().y + 32))
+	{
+		m_MissileAlive = false;
+		m_PlayerHit = true;
+		if (m_MissileAlive)
+		{
+			std::cout << "Missile Hit" << std::endl;
+		}
+		
+	}
+}
 
 void AlienNest::Update(sf::Sprite &p)
 {
 	FindPlayerPosition(p.getPosition().x,p.getPosition().y);
 	FireStinger(p.getPosition().x, p.getPosition().y);
+	CheckPlayerCollision(p);
+
 	if (m_MissileAlive)
 	{
 		sf::Vector2f temp = p.getPosition();
@@ -93,10 +111,11 @@ void AlienNest::Update(sf::Sprite &p)
 		m_Missile.setPosition(m_MissilePosition);
 	}
 
-	if (m_FoundPlayer && m_MissileLifeTime <= 0)
+	if ((m_FoundPlayer && m_MissileLifeTime <= 0) ||( m_PlayerHit) )
 	{
 		m_MissileAlive = false;
 		m_FoundPlayer = false;
+		m_PlayerHit = false;
 		m_MissileLifeTime = 300;
 		m_MissilePosition = m_NestPosition;
 		std::cout << "MissileAlive Set To False" << std::endl;

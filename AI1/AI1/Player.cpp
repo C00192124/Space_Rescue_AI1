@@ -62,7 +62,7 @@ void Player::Collision(std::vector<Worker> *w)
 			&& ((m_Player.getPosition().x - 32) < w->at(i).m_Worker.getPosition().x + 32)
 			&& ((m_Player.getPosition().y - 32) < w->at(i).m_Worker.getPosition().y + 32))
 		{
-			std::cout << "Hit" << std::endl;
+			//std::cout << "Hit" << std::endl;
 			w->erase(w->begin() + i);
 		}
 		
