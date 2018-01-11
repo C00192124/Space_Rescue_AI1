@@ -47,7 +47,7 @@ void AlienNest::FindPlayerPosition(int x, int y)
 	if (!m_FoundPlayer)
 	{
 		sf::Vector2f m_PositionDifference = m_NestPosition - p;
-		m_TotalDistance = Vector::Length(m_PositionDifference);
+		m_TotalDistance = Functions::Length(m_PositionDifference);
 
 		if (m_TotalDistance <= m_FiringRange)
 		{
@@ -70,7 +70,7 @@ void AlienNest::FireMissileNow(int x, int y)
 	{
 		m_MissileAlive = true;
 		sf::Vector2f MissilePosition = p - m_NestPosition;
-		MissilePosition = Vector::Normalise(MissilePosition);
+		MissilePosition = Functions::Normalise(MissilePosition);
 	}
 }
 
@@ -78,9 +78,9 @@ void AlienNest::Seek(sf::Vector2f&  tar)
 {
 
 	m_MissileVelocity = tar - m_MissilePosition;
-	m_MissileVelocity = Vector::Normalise(m_MissileVelocity);
+	m_MissileVelocity = Functions::Normalise(m_MissileVelocity);
 	m_MissileVelocity = m_MissileVelocity * 2.0f;
-	m_MissileOrientation = Vector::GetOrientation(m_MissileOrientation, m_MissileVelocity);
+	m_MissileOrientation = Functions::GetOrientation(m_MissileOrientation, m_MissileVelocity);
 	m_Missile.setRotation(m_MissileOrientation);
 }
 
