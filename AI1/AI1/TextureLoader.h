@@ -4,24 +4,21 @@
 #include <string>
 #include "SFML\Graphics.hpp"
 
-using namespace std;
-using namespace sf;
-
 class TextureLoader
 {
 private:
 	static TextureLoader * TLInstance;
-	map<string, Texture> Textures;
+	std::map<std::string, sf::Texture> Textures;
 	TextureLoader()
 	{
-		Textures = map<string, Texture>();
+		Textures = std::map<std::string, sf::Texture>();
 	};
 
 public:
 
-	void addTexture(string Tag, string Path);
+	void addTexture(std::string Tag, std::string Path);
 
-	Texture getTexture(string Tag);
+	sf::Texture getTexture(std::string Tag);
 
 	static TextureLoader * Instance()
 	{

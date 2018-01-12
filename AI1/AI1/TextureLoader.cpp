@@ -2,21 +2,19 @@
 
 TextureLoader* TextureLoader::TLInstance = 0;
 
-void TextureLoader::addTexture(string Tag, string Path)
+void TextureLoader::addTexture(std::string Tag, std::string Path)
 {
-	Texture LoadTexture;
+	sf::Texture LoadTexture;
 	if (!(LoadTexture.loadFromFile(Path)))
 	{
-		cout << "Failed to load in Texture" << endl;
 	}
 	else
 	{
 		Textures[Tag] = LoadTexture;
-		cout << "Texture " << Tag << " successfully loaded" << endl;
 	}
 }
 
-Texture TextureLoader::getTexture(string Tag)
+sf::Texture TextureLoader::getTexture(std::string Tag)
 {
 	return Textures[Tag];
 }

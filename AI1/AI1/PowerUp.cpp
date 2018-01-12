@@ -23,8 +23,3 @@ void PowerUp::Render(sf::RenderWindow &w)
 {
 	w.draw(m_PowerUp);
 }
-
-void PowerUp::Update()
-{
-
-}

@@ -20,10 +20,10 @@ gamestates m_state;
 
 void main()
 {
-	TextureLoader * WhiteSquareRemover;
-	WhiteSquareRemover = TextureLoader::Instance();
-	WhiteSquareRemover->addTexture("Worker", "Resources/butterfly.png");
-	WhiteSquareRemover->addTexture("PowerUp", "Resources/Lightningbolt.png");
+	TextureLoader * TextureManager;
+	TextureManager = TextureLoader::Instance();
+	TextureManager->addTexture("Worker", "Resources/butterfly.png");
+	TextureManager->addTexture("PowerUp", "Resources/Lightningbolt.png");
 
 	sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "AI");
 	window.setFramerateLimit(60);
@@ -71,11 +71,6 @@ void main()
 			m_aNest.Update(p.m_Player);
 			m_aNest1.Update(p.m_Player);
 			m_aNest2.Update(p.m_Player);
-
-			for (int i = 0; i < powerups.size(); i++)
-			{
-				powerups.at(i).Update();
-			}
 
 			for (int i = 0; i < workers.size(); i++)
 			{

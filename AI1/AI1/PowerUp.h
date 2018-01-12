@@ -8,9 +8,7 @@ class PowerUp
 public:
 	PowerUp();
 	~PowerUp();
-	void Render(sf::RenderWindow &w);
-	void Update();
-	
+	void Render(sf::RenderWindow &w);	
 	sf::Sprite m_PowerUp;
 
 private:

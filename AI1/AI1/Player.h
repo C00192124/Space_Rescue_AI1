@@ -16,6 +16,8 @@ public:
 	void Update(std::vector<Worker> *w, std::vector<PowerUp> *pUp);
 	sf::View GetView();
 	sf::Sprite m_Player;
+	
+	
 
 private:
 	//Player Variables
@@ -26,8 +28,10 @@ private:
 	InputManager *m_Input;
 
 	sf::View camera;
-	
 	float m_Speed;
+	
+	bool powerUpBool;
+	int powerUpTimer=180;
 	float m_Orientation;
 
 	void Collision(std::vector<Worker> *w, std::vector<PowerUp> *pUp);
