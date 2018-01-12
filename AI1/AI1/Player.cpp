@@ -18,10 +18,18 @@ Player::Player(InputManager *i)
 void Player::Render(sf::RenderWindow &w)
 {
 	w.draw(m_Player);
+
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		bullets.at(i).Render(w);
+	}
+
+
 }
 
-void Player::Update(std::vector<Worker> *w, std::vector<PowerUp> *pUp)
+void Player::Update(std::vector<Worker> *w, std::vector<PowerUp> *pUp, std::vector<AlienNest> *ANest)
 {
+	tim--;
 	m_Velocity = Functions::setVelocity(m_Orientation);
 	m_Velocity *= m_Speed;
 	m_Player.move(m_Velocity);
@@ -49,6 +57,22 @@ void Player::Update(std::vector<Worker> *w, std::vector<PowerUp> *pUp)
 		m_Orientation = m_Orientation + 0.1;
 		m_Player.setRotation(m_Orientation*(180 / 3.14159));
 	}
+	if (m_Input->space)
+	{
+		if (tim<0)
+		{
+			fire();
+		}
+
+	}
+
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		if (!bullets.at(i).Update())
+		{
+			bullets.erase(bullets.begin() + i);
+		}
+	}
 
 	if (powerUpBool)
 	{
@@ -65,11 +89,17 @@ void Player::Update(std::vector<Worker> *w, std::vector<PowerUp> *pUp)
 
 		}
 	}
-
-	Collision(w, pUp);
+Collision(w, pUp, ANest);
 }
 
-void Player::Collision(std::vector<Worker> *w, std::vector<PowerUp> *pUp)
+void Player::fire()
+{
+	sf::Vector2f pos = sf::Vector2f(m_Player.getPosition().x, m_Player.getPosition().y);
+	bullets.push_back(SeedBullet(pos, m_Velocity,m_Orientation)); 
+	tim = 50;
+}
+
+void Player::Collision(std::vector<Worker> *w, std::vector<PowerUp> *pUp, std::vector<AlienNest> *ANest)
 {
 	// Worker Collision
 	for (int i = 0; i < w->size(); i++)
@@ -95,7 +125,28 @@ void Player::Collision(std::vector<Worker> *w, std::vector<PowerUp> *pUp)
 			pUp->erase(pUp->begin() + i);
 			powerUpBool = true;
 		}
-
+	}
+	
+	//AlienNest Collision
+	for (int i = 0; i < ANest->size(); i++)
+	{
+		for (int j = 0; j < bullets.size(); j++)
+		{
+			if (((bullets.at(j).m_sprite.getPosition().x + 16) > ANest->at(i).m_Nest.getPosition().x - 32)
+				&& ((bullets.at(j).m_sprite.getPosition().y + 16) > ANest->at(i).m_Nest.getPosition().y - 32)
+				&& ((bullets.at(j).m_sprite.getPosition().x - 16) < ANest->at(i).m_Nest.getPosition().x + 32)
+				&& ((bullets.at(j).m_sprite.getPosition().y - 16) < ANest->at(i).m_Nest.getPosition().y + 32))
+			{
+				bullets.erase(bullets.begin()+ j);
+				ANest->at(i).m_nestHealth--;
+				if (ANest->at(i).m_nestHealth == 0)
+				{
+					ANest->at(i).m_nestAlive = false;
+					ANest->erase(ANest->begin() + i);
+				}
+			
+			}
+		}
 	}
 }
 

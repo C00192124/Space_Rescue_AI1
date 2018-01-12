@@ -25,6 +25,7 @@ void main()
 	TextureManager = TextureLoader::Instance();
 	TextureManager->addTexture("Worker", "Resources/butterfly.png");
 	TextureManager->addTexture("PowerUp", "Resources/Lightningbolt.png");
+	TextureManager->addTexture("Bullet", "Resources/pb.png");
 
 	sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "AI");
 	window.setFramerateLimit(60);
@@ -36,6 +37,7 @@ void main()
 	GameWorld world;
 	Menu m_Menu(windowWidth, windowHeight, input);
 	Sweeper sweeper;
+
 	vector<Worker> workers;
 	Worker worker;
 	for (int i = 0; i < 10; i++)
@@ -45,8 +47,12 @@ void main()
 	}
 
 	AlienNest m_aNest;
-	AlienNest m_aNest1;
-	AlienNest m_aNest2;
+	vector<AlienNest> nest;
+	for (int i = 0; i < 3; i++)
+	{
+		m_aNest = AlienNest();
+		nest.push_back(m_aNest);
+	}
 	Player p(input);
 
 	vector<PowerUp> powerups;
@@ -68,16 +74,19 @@ void main()
 		//Update
 		if (m_state.currentState == gamestates::Play)
 		{
-			p.Update(&workers, &powerups);
-			m_aNest.Update(p.m_Player);
-			m_aNest1.Update(p.m_Player);
-			m_aNest2.Update(p.m_Player);
+			p.Update(&workers, &powerups, &nest);
 			sweeper.Update(world, p.m_Player, workers);
 
 			for (int i = 0; i < workers.size(); i++)
 			{
 				workers.at(i).Update(world);
 			}
+
+			for (int i = 0; i < nest.size(); i++)
+			{
+				nest.at(i).Update(p.m_Player);
+			}
+
 			window.setView(p.GetView());
 		}
 
@@ -103,9 +112,12 @@ void main()
 			{
 				workers.at(i).Render(window);
 			}
-			m_aNest.Render(window);
-			m_aNest1.Render(window);
-			m_aNest2.Render(window);
+
+			for (int i = 0; i < nest.size(); i++)
+			{
+				nest.at(i).Render(window);
+			}
+
 			sweeper.Render(window);
 			p.Render(window);
 

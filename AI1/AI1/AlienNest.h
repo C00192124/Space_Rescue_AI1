@@ -15,19 +15,21 @@ public:
 	void FindPlayerPosition(int,int);
 	void FireStinger(int, int);
 	void CheckPlayerCollision(sf::Sprite &p);
+	sf::Sprite m_Nest;	
+	int m_nestHealth;
+	bool m_nestAlive;
 
 private:
 
 	//Alien Nest Variables
 	sf::Texture m_NestTexture;
-	sf::Sprite m_Nest;	
+	
 	sf::Vector2f m_NestPosition;
 
 	int randx;
 	int randy;
 
-	int m_nestHealth;
-	bool m_nestAlive;
+
 
 	bool m_FoundPlayer;
 	float m_TotalDistance;
