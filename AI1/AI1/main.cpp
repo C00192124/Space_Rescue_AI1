@@ -10,6 +10,7 @@
 #include "PowerUp.h"
 #include "AlienNest.h"
 #include "TextureLoader.h"
+#include "Sweeper.h"
 
 using namespace std;
 
@@ -34,7 +35,7 @@ void main()
 	InputManager *input = new InputManager(event);
 	GameWorld world;
 	Menu m_Menu(windowWidth, windowHeight, input);
-	
+	Sweeper sweeper;
 	vector<Worker> workers;
 	Worker worker;
 	for (int i = 0; i < 10; i++)
@@ -71,6 +72,7 @@ void main()
 			m_aNest.Update(p.m_Player);
 			m_aNest1.Update(p.m_Player);
 			m_aNest2.Update(p.m_Player);
+			sweeper.Update(world, p.m_Player, workers);
 
 			for (int i = 0; i < workers.size(); i++)
 			{
@@ -104,6 +106,7 @@ void main()
 			m_aNest.Render(window);
 			m_aNest1.Render(window);
 			m_aNest2.Render(window);
+			sweeper.Render(window);
 			p.Render(window);
 
 		}
