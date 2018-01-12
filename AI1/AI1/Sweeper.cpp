@@ -24,7 +24,7 @@ void Sweeper::Update(GameWorld &w, sf::Sprite &p, vector<Worker> t)
 	{
 		for (int q = 0; q < t.size(); q++)
 		{
-			if (CheckRange(t.at(q).m_Worker.getPosition().x, t.at(q).m_Worker.getPosition().y))
+			if (CheckRange(t.at(q).m_Worker.getPosition().x, t.at(q).m_Worker.getPosition().y, 300))
 			{
 				temp = t.at(q).m_Worker.getPosition();
 				prey = q;
@@ -35,10 +35,21 @@ void Sweeper::Update(GameWorld &w, sf::Sprite &p, vector<Worker> t)
 		}
 	}
 
+	if (!flee)
+	{
+		if (CheckRange(p.getPosition().x, p.getPosition().y, 200))
+		{
+			wander = false;
+			attack = false;
+			flee = true;
+		}
+	}
+
 	if (wander)
 	{
 		Functions::Wander(time, wanderTarget, m_SweeperPosition, m_SweeperVelocity, radius, distance, m_SweeperOrientation, m_Sweeper);
 	}
+	
 	if (attack)
 	{
 		temp = t.at(prey).m_Worker.getPosition();
@@ -48,6 +59,18 @@ void Sweeper::Update(GameWorld &w, sf::Sprite &p, vector<Worker> t)
 			t.erase(t.begin() + prey);
 			attack = false;
 			flee = false;
+			wander = true;
+		}
+	}
+	
+	if (flee)
+	{
+		sf::Vector2f v = p.getPosition();
+		Functions::Flee(v, m_SweeperPosition, m_SweeperVelocity, m_SweeperOrientation, m_Sweeper);
+		if (CheckRange(p.getPosition().x, p.getPosition().y, 400))
+		{
+			flee = false;
+			attack = false;
 			wander = true;
 		}
 	}
@@ -67,7 +90,6 @@ void Sweeper::Update(GameWorld &w, sf::Sprite &p, vector<Worker> t)
 					&& (m_SweeperPosition.y - 64 <= ((64 * j) + 64 + 64)))
 				{
 					m_SweeperVelocity = -m_SweeperVelocity;
-					std::cout << "Hit" << std::endl;
 				}
 			}
 		}
@@ -86,7 +108,7 @@ bool Sweeper::Collision(sf::Sprite &s)
 	else return false;
 }
 
-bool Sweeper::CheckRange(int x, int y)
+bool Sweeper::CheckRange(int x, int y, int range)
 {
 	sf::Vector2f target(x, y);
 	sf::Vector2f diff = m_SweeperPosition - target;

@@ -15,8 +15,6 @@ public:
 	void Render(sf::RenderWindow &w);
 	void Update(GameWorld &w, sf::Sprite &p, vector<Worker> t);
 
-	bool CheckRange(int x,int y);
-
 	sf::Sprite m_Sweeper;
 
 private:
@@ -31,7 +29,6 @@ private:
 	float distance;
 	float radius = 500.0f;
 	float m_SweeperOrientation;
-	float range = 300;
 
 	bool attack;
 	bool wander;
@@ -41,5 +38,6 @@ private:
 	int prey;
 
 	bool Collision(sf::Sprite &s);
+	bool CheckRange(int x, int y, int range);
 };
 

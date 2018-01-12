@@ -93,4 +93,13 @@ static struct Functions
 		obj.setRotation(orientation);
 	}
 
+	static void Flee(sf::Vector2f&  tar, sf::Vector2f& Position, sf::Vector2f& Velocity, float& orientation, sf::Sprite& obj)
+	{
+		Velocity = Position - tar;
+		Velocity = Normalise(Velocity);
+		Velocity = Velocity * 3.0f;
+		orientation = GetOrientation(orientation, Velocity);
+		obj.setRotation(orientation);
+	}
+
 };
