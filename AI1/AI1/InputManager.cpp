@@ -42,7 +42,7 @@ void InputManager::CheckInput(sf::RenderWindow &w)
 			}
 			if (m_event.key.code == sf::Keyboard::Return) {
 				enter = true;
-				cout << "Space Pressed" << endl;
+				cout << "Enter Pressed" << endl;
 			}
 			break;
 
