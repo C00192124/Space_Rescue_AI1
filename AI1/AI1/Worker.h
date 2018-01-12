@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "BasicFunction.h"
 #include "GameWorld.h"
+#include "TextureLoader.h"
 
 class Worker 
 {
@@ -20,7 +21,7 @@ private:
 	sf::Vector2f m_WorkerVelocity;
 	sf::Vector2f m_WorkerPosition;
 	sf::Vector2f wanderTarget = sf::Vector2f(0.0, 0.0);
-
+	TextureLoader * m_TLoader;
 	sf::Texture m_WorkerTexture;
 	
 	float time = 5.0f;

@@ -9,6 +9,7 @@
 #include "Worker.h"
 #include "PowerUp.h"
 #include "AlienNest.h"
+#include "TextureLoader.h"
 
 using namespace std;
 
@@ -19,6 +20,11 @@ gamestates m_state;
 
 void main()
 {
+	TextureLoader * TextureManager;
+	TextureManager = TextureLoader::Instance();
+	TextureManager->addTexture("Worker", "Resources/butterfly.png");
+	TextureManager->addTexture("PowerUp", "Resources/Lightningbolt.png");
+
 	sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "AI");
 	window.setFramerateLimit(60);
 	srand(time(NULL));
@@ -41,7 +47,16 @@ void main()
 	AlienNest m_aNest1;
 	AlienNest m_aNest2;
 	Player p(input);
+
+	vector<PowerUp> powerups;
 	PowerUp powerup;
+
+	for (int i = 0; i < 4; i++)
+	{
+		powerup = PowerUp();
+		powerups.push_back(powerup);
+	}
+
 
 
 	while (window.isOpen())
@@ -52,16 +67,18 @@ void main()
 		//Update
 		if (m_state.currentState == gamestates::Play)
 		{
-			p.Update(&workers);
+			p.Update(&workers, &powerups);
 			m_aNest.Update(p.m_Player);
 			m_aNest1.Update(p.m_Player);
 			m_aNest2.Update(p.m_Player);
+
 			for (int i = 0; i < workers.size(); i++)
 			{
 				workers.at(i).Update(world);
 			}
 			window.setView(p.GetView());
 		}
+
 		else if (m_state.currentState == gamestates::Menu)
 		{
 			m_Menu.Update();
@@ -74,7 +91,11 @@ void main()
 		if (m_state.currentState == gamestates::Play)
 		{
 			world.Render(window);
-			powerup.Render(window);
+
+			for (int i = 0; i < powerups.size(); i++)
+			{
+				powerups.at(i).Render(window);
+			}
 			
 			for (int i = 0; i < workers.size(); i++)
 			{

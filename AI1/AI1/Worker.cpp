@@ -3,7 +3,10 @@
 
 Worker::Worker()
 {
-	m_WorkerTexture.loadFromFile("Resources/butterfly.png");
+	
+	m_TLoader = TextureLoader::Instance();
+	m_WorkerTexture = m_TLoader->getTexture("Worker");
+
 	m_Worker.setTexture(m_WorkerTexture);
 	m_WorkerVelocity = sf::Vector2f(3.0f, 0.0f);
 	m_WorkerPosition = sf::Vector2f(rand() % 3000, rand() % 3000);

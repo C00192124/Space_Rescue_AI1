@@ -1,21 +1,16 @@
-﻿  Worker.cpp
-c:\users\gameuser\desktop\master\space_rescue_ai1\ai1\ai1\basicfunction.h(96): warning C4091: 'static ': ignored on left of 'Functions' when no variable is declared
-c:\users\gameuser\desktop\master\space_rescue_ai1\ai1\ai1\basicfunction.h(55): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\gameuser\desktop\master\space_rescue_ai1\ai1\ai1\basicfunction.h(74): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\gameuser\desktop\master\space_rescue_ai1\ai1\ai1\worker.cpp(9): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  AlienNest.cpp
-c:\users\gameuser\desktop\master\space_rescue_ai1\ai1\ai1\basicfunction.h(96): warning C4091: 'static ': ignored on left of 'Functions' when no variable is declared
-c:\users\gameuser\desktop\master\space_rescue_ai1\ai1\ai1\basicfunction.h(55): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\gameuser\desktop\master\space_rescue_ai1\ai1\ai1\basicfunction.h(74): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\gameuser\desktop\master\space_rescue_ai1\ai1\ai1\aliennest.cpp(21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\gameuser\desktop\master\space_rescue_ai1\ai1\ai1\aliennest.cpp(46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\gameuser\desktop\master\space_rescue_ai1\ai1\ai1\aliennest.cpp(66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\gameuser\desktop\master\space_rescue_ai1\ai1\ai1\aliennest.cpp(80): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
-c:\users\gameuser\desktop\master\space_rescue_ai1\ai1\ai1\aliennest.cpp(81): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+﻿  Player.cpp
+c:\users\gameuser\desktop\space_rescue_ai1\ai1\ai1\basicfunction.h(96): warning C4091: 'static ': ignored on left of 'Functions' when no variable is declared
+c:\users\gameuser\desktop\space_rescue_ai1\ai1\ai1\basicfunction.h(55): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\gameuser\desktop\space_rescue_ai1\ai1\ai1\basicfunction.h(74): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\gameuser\desktop\space_rescue_ai1\ai1\ai1\player.cpp(44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\gameuser\desktop\space_rescue_ai1\ai1\ai1\player.cpp(45): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\gameuser\desktop\space_rescue_ai1\ai1\ai1\player.cpp(49): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\gameuser\desktop\space_rescue_ai1\ai1\ai1\player.cpp(50): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\gameuser\desktop\space_rescue_ai1\ai1\ai1\player.cpp(75): warning C4018: '<': signed/unsigned mismatch
+c:\users\gameuser\desktop\space_rescue_ai1\ai1\ai1\player.cpp(88): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   Skipping... (no relevant changes detected)
-  main.cpp
   PowerUp.cpp
-  Player.cpp
-  AI1.vcxproj -> C:\Users\gameuser\Desktop\Master\Space_Rescue_AI1\AI1\Debug\AI1.exe
-  AI1.vcxproj -> C:\Users\gameuser\Desktop\Master\Space_Rescue_AI1\AI1\Debug\AI1.pdb (Partial PDB)
+  main.cpp
+  AI1.vcxproj -> C:\Users\gameuser\Desktop\Space_Rescue_AI1\AI1\Debug\AI1.exe
+  AI1.vcxproj -> C:\Users\gameuser\Desktop\Space_Rescue_AI1\AI1\Debug\AI1.pdb (Partial PDB)
