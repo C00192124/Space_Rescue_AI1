@@ -14,6 +14,7 @@ public:
 	void Update(sf::Sprite &p);
 	void FindPlayerPosition(int,int);
 	void FireStinger(int, int);
+	void CheckPlayerCollision(sf::Sprite &p);
 
 private:
 
@@ -38,6 +39,7 @@ private:
 	sf::Vector2f m_MissileVelocity;
 
 	bool m_MissileAlive;
+	bool m_PlayerHit;
 	int m_MissileLifeTime;
 
 	int m_FiringRange;
